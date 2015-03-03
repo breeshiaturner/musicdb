@@ -1,9 +1,19 @@
 Rails.application.routes.draw do
 
 
-  devise_for :users
+
+
   root 'albums#index'
-  get '/about' => 'static_pages#about', as:'about'
+  get '/welcome' => 'static_pages#welcome', as: 'welcome'
+  get '/about'=> 'static_pages#about', as: 'about'
+
+  devise_for :users, controllers: {
+        registrations: 'user/registrations'
+      }
+
+
+
+
   resources :genres
 
   resources :songs
