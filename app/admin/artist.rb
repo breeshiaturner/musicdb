@@ -14,6 +14,11 @@ ActiveAdmin.register Artist do
   #   permitted << :other if resource.something?
   #   permitted
   # end
-
+controller do
+ defaults finder: :find_by_slug
+end
 
 end
+
+
+

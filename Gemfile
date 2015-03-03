@@ -1,4 +1,7 @@
 source 'https://rubygems.org'
+
+gem 'bootswatch-rails'
+gem 'friendly_id','~>5.1.0'
 gem 'bootstrap-sass', '~>3.3.3'
 gem 'activeadmin', github: 'activeadmin'
 gem 'devise'

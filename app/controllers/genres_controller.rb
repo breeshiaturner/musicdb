@@ -1,6 +1,6 @@
 class GenresController < ApplicationController
   before_action :set_genre, only: [:show, :edit, :update, :destroy]
-
+  before_action authenticate_user!
   # GET /genres
   # GET /genres.json
   def index
@@ -15,6 +15,9 @@ class GenresController < ApplicationController
   # GET /genres/new
   def new
     @genre = Genre.new
+    @album = Album.all
+    @artist = Artist.all
+    @song = Song.all
 
   end
 
