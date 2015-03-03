@@ -3,7 +3,12 @@ Rails.application.routes.draw do
 
 
 
-  root 'albums#index'
+  get 'static_pages/home'
+  get 'static_pages/about'
+
+  devise_for :admin_users, ActiveAdmin::Devise.config
+  ActiveAdmin.routes(self)
+  root to: 'static_pages#home'
   get '/welcome' => 'static_pages#welcome', as: 'welcome'
   get '/about'=> 'static_pages#about', as: 'about'
 
