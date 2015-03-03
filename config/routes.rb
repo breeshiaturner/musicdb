@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+
+
+  devise_for :users
+  root 'albums#index'
+  get '/about' => 'static_pages#about', as:'about'
   resources :genres
 
   resources :songs
