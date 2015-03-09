@@ -1,22 +1,16 @@
 Rails.application.routes.draw do
-
-
+  
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
-  root to: 'static_pages#home'
+  root 'static_pages#home'
+
+  get '/about' => 'static_pages#about', as: 'about'
 
   get '/welcome' => 'static_pages#welcome', as: 'welcome'
-  get '/home' => 'static_pages#home', as: 'home'
-  get '/about'=> 'static_pages#about', as: 'about'
 
   devise_for :users, controllers: {
         registrations: 'user/registrations'
-   }
-
-
-  resources :home
-
-  resources :about
+      }
 
   resources :genres
 

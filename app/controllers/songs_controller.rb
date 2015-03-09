@@ -1,10 +1,11 @@
 class SongsController < ApplicationController
   before_action :set_song, only: [:show, :edit, :update, :destroy]
-  before_action authenticate_user!
+  before_action :authenticate_user!
+
   # GET /songs
   # GET /songs.json
   def index
-    @songs = Song.all
+    @songs = Song.paginate(page: params[:page], per_page: 10)
   end
 
   # GET /songs/1
@@ -25,7 +26,6 @@ class SongsController < ApplicationController
     @artists = Artist.all
     @albums = Album.all
     @genres = Genre.all
-
   end
 
   # POST /songs
@@ -71,11 +71,11 @@ class SongsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_song
-      @song = Song.find(params[:id])
+      @song = Song.friendly.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def song_params
-      params.require(:song).permit(:name, :genre_id, :album_id, :artist_id)
+      params.require(:song).permit(:name, :genre_id, :artist_id, :album_id)
     end
 end

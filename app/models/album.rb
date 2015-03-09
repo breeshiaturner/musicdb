@@ -1,12 +1,12 @@
 class Album < ActiveRecord::Base
-	has_many :songs
 	belongs_to :genre
 	belongs_to :artist
+	has_many :songs
 
-	validates :title, presence:true
- 	validates :title, length:{maximum:90}
- 	validates :title, uniqueness:true
+	validates :title, presence: true
 
- 	mount_uploader :cover, CoverUploader
-	
+	mount_uploader :cover, CoverUploader
+
+	extend FriendlyId
+  	friendly_id :title, use: :slugged
 end

@@ -2,13 +2,17 @@
 
 <h1>Listing Songs</h1>
 
-<table>
+<br>
+
+<%= link_to 'New Song', new_song_path %>
+
+<table class="table table-striped table-hover">
   <thead>
     <tr>
       <th>Name</th>
       <th>Genre</th>
-      <th>Album</th>
       <th>Artist</th>
+      <th>Album</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -17,9 +21,9 @@
     <% @songs.each do |song| %>
       <tr>
         <td><%= song.name %></td>
-        <td><%= song.genre.name%></td>
-        <td><%= song.album.title%></td>
+        <td><%= song.genre.name %></td>
         <td><%= song.artist.name %></td>
+        <td><%= song.album.title%></td>
         <td><%= link_to 'Show', song %></td>
         <td><%= link_to 'Edit', edit_song_path(song) %></td>
         <td><%= link_to 'Destroy', song, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -30,4 +34,4 @@
 
 <br>
 
-<%= link_to 'New Song', new_song_path %>
+<%= will_paginate @songs, renderer: BootstrapPagination::Rails %>

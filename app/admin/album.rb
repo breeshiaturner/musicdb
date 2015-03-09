@@ -1,10 +1,14 @@
 ActiveAdmin.register Album do
- permit_params :title, :cover, :genre_id, :artist_id
+  permit_params :title, :cover, :genre_id, :artist_id
+
+  controller do
+    defaults finder: :find_by_slug
+  end
 
   # See permitted parameters documentation:
   # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
   #
- 
+  # permit_params :list, :of, :attributes, :on, :model
   #
   # or
   #
@@ -13,10 +17,7 @@ ActiveAdmin.register Album do
   #   permitted << :other if resource.something?
   #   permitted
   # end
-controller do
- defaults finder: :find_by_slug
-end
+
 
 end
-
 

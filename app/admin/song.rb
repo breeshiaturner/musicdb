@@ -1,6 +1,9 @@
 ActiveAdmin.register Song do
 permit_params :name, :genre_id, :artist_id, :album_id
 
+  controller do
+    defaults finder: :find_by_slug
+  end
 
   # See permitted parameters documentation:
   # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
@@ -14,9 +17,7 @@ permit_params :name, :genre_id, :artist_id, :album_id
   #   permitted << :other if resource.something?
   #   permitted
   # end
-controller do
- defaults finder: :find_by_slug
-end
+
 
 end
 

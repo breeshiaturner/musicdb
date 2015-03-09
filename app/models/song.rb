@@ -1,8 +1,11 @@
 class Song < ActiveRecord::Base
 	belongs_to :artist
-	has_many :songs
 	belongs_to :album
+	belongs_to :genre
 
-	validates :name, presence:true
-	validates :name, length: {maximum: 25}
+	validates :name, presence: true
+
+	extend FriendlyId
+  	friendly_id :name, use: :slugged
+	
 end
